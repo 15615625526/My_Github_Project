@@ -16,7 +16,7 @@ public class Main {
 
 //        \n代表换行
         System.out.println("你好\n中国");
-//        \t代表一个Tab
+//        \t代表一个Tab空格
         System.out.println("你好\t中国");
 //        println是打印之后换行,print是打印之后不换行,因为ln本身就是换行的意思
         System.out.print("你好,中国");
