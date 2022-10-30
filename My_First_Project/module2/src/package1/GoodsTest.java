@@ -1,6 +1,6 @@
 package package1;
 
-public class Test {
+public class GoodsTest {
     public static void main(String[] args) {
         Goods goods1 = new Goods(1, "Iphone1", 1000.0, 100);
         Goods goods2 = new Goods(2, "Iphone2", 2000.0, 100);
