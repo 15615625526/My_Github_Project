@@ -39,7 +39,8 @@ public class Main {
 
         int age = 20;//在括号外可以再次定义相同的变量
         System.out.println(age);
-//        int grade = 60.0;此处是不对的,因为再同一个大括号内已经定义过grade变量了
+//        int wanghui = 23.4;此处是不对的,因为23.4是double类型,不能定义为int类型
+//        int grade = 60;此处是不对的,因为再同一个大括号内已经定义了一个grade变量了,即使变量类型不同也不行
 //        System.out.println(age);注意此处是不对的,因为age变量只在大括号内有效,在大括号外无效
         char ch = 'a';//char代表字符类型
         System.out.println('a' + 1);//在计算机底层,字符'a'使用97的二进制来存储的,所以结果为98(ASCII码表中可查询)
@@ -50,7 +51,7 @@ public class Main {
 //        float b = 98.5;随意写个小数默认是double类型,如果表示float必须加上F或者f
         float b = 98.5F;
         boolean c = true;//布尔类型必须用小写的true和false
-        String v = "你好啊";//字符串类型String必须是大写
+        String v = "你好啊";//字符串类型String首字母必须是大写
         int studentAge = 89;//定义变量建议用小驼峰命名法,定义类用大驼峰命名法,方法也是用小驼峰命名法
         System.out.println("------------------------数据类型转换-----------------------------------------");
         System.out.println("----------自动类型转换----------------");
@@ -215,8 +216,8 @@ public class Main {
         System.out.print("请输入月份:");
         int month = aaaaaa.nextInt();
         switch (month) {
+            //如果不加break,就会一直打印直到遇到break停止,这就是switch分支结构的穿透性
             case 1:
-                System.out.println("31天");//如果不加break,就会一直打印直到遇到break停止,这就是switch分支结构的穿透性
             case 3:
             case 5:
             case 7:

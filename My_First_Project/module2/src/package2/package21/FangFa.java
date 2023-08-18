@@ -1,11 +1,9 @@
-package package2;
+package package2.package21;
 //=============================除了基本数据类型还有引用数据类型,字符串和数组都是引用数据类型=============================
-
-import java.util.Scanner;
 
 public class FangFa {
     //定义一个求和功能的方法:
-    public static int sum(int a, int b) {
+    public static int sums(int a, int b) {
         int c = a + b;
         return c;
         //return后面不能再有代码了,因为永远执行不到
@@ -101,10 +99,12 @@ public class FangFa {
 
     //在main方法中调用上面定义过的方法:
     public static void main(String[] args) {
-        //这是调用同一个类中的sum方法
-        int a = sum(1, 2);
+        //这是调用同一个类中的sums方法
+        int a = sums(1, 2);
         System.out.println(a);
-        print("haha");//没有返回值的方法直接调用即可,不需要用其他变量来接它
+
+
+        print("halou");//没有返回值的方法直接调用即可,不需要用其他变量来接它
 //        String b = print("haah");//注意这样写是不对的,因为print方法是没有return返回值的,所以不能用一个字符串b来接它
         fangFaQianTao("haha", "heihei");
         System.out.println(qiuHe(5));

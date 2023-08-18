@@ -6,12 +6,12 @@ public class SpaceReplace {
         if (s == null) {
             return s;
         }
-        return s.replaceAll(" ", "%20");
+        return s.replaceAll(" ", "");
     }
 
     public static void main(String[] args) {
         SpaceReplace so = new SpaceReplace();
-        String sdf = so.spaceReplace(" ");
+        String sdf = so.spaceReplace("Hello   World");
         System.out.println(sdf);
     }
 

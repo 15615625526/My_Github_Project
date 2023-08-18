@@ -1,4 +1,4 @@
-package package2;
+package package5;
 
 public class FangFaChongZai {
     public static void main(String[] args) {
