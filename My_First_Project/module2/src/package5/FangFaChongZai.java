@@ -20,7 +20,7 @@ public class FangFaChongZai {
     }
 
 //    public static void fire(String loca, int num) {//注意这个方法不是重载方法,而是重复方法,只是形参名称不同而已==========
-
+//
 //    }
 
     public static void fire(int number, String location) {

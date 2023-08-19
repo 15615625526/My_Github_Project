@@ -1,4 +1,4 @@
-package package1;
+package package1.package12;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,7 +26,7 @@ public class Goods {
 
     public void addGoodsToCart() {  //添加指定数量的商品到购物车中
         while (true) {
-            System.out.print("请输入您要添加的数量\n:");
+            System.out.print("请输入您要添加的"+name+"数量:");
             int num1 = a.nextInt();
             if (num1 <= stock & num1 > 0) {
                 cart.add(Goods.this);
@@ -35,9 +35,15 @@ public class Goods {
                 System.out.println("已将" + num1 + "个\"" + name + "\"商品添加到购物车");
                 break;
             } else if (num1 < 1) {
-                System.err.println("您输入的是无效数量,请重新输入!");
+                System.out.println("-----------------------------------");
+                System.out.println("您输入的是无效数量,请重新输入!");
+                System.out.println("-----------------------------------");
+                System.err.println("\n您输入的是无效数量,请重新输入!");
             } else {
-                System.err.println("对不起,库存不足,请减少添加到购物车中的该商品数量!");
+                System.out.println("-----------------------------------");
+                System.out.println("对不起,库存不足,请减少添加到购物车中的该商品数量!");
+                System.out.println("-----------------------------------");
+                System.err.println("\n对不起,库存不足,请减少添加到购物车中的该商品数量!");
 
             }
         }
@@ -45,12 +51,15 @@ public class Goods {
 
     public void deleteGoodsFromCart() {   //将商品从购物车中删除
         if (num > 0) {
-            cart.remove(name);
+            cart.remove(Goods.this);
             stock += num;
             this.num = 0;
             System.out.println("已将\"" + name + "\"商品从购物车中删除");
         } else {
-            System.err.println("您并未添加该商品到购物车!");
+            System.out.println("-----------------------------------");
+            System.out.println("您并未添加该商品到购物车!");
+            System.out.println("-----------------------------------");
+            System.err.println("\n您并未添加该商品到购物车!");
         }
     }
 
@@ -60,9 +69,15 @@ public class Goods {
             stock -= 1;
             System.out.println(name + ":+1");
         } else if (num == 0) {
-            System.err.println("请先将商品添加到购物车再执行此操作!");
+            System.out.println("-----------------------------------");
+            System.out.println("请先将商品添加到购物车再执行此操作!");
+            System.out.println("-----------------------------------");
+            System.err.println("\n请先将商品添加到购物车再执行此操作!");
         } else {
-            System.err.println("对不起,库存不足,您无法继续添加更多该商品!");
+            System.out.println("-----------------------------------");
+            System.out.println("对不起,库存不足,您无法继续添加更多该商品!");
+            System.out.println("-----------------------------------");
+            System.err.println("\n对不起,库存不足,您无法继续添加更多该商品!");
 
         }
     }
@@ -74,9 +89,15 @@ public class Goods {
             stock += 1;
             System.out.println(name + ":-1");
         } else if (num == 0) {
-            System.err.println("您并未添加该商品到购物车!");
+            System.out.println("-----------------------------------");
+            System.out.println("您并未添加该商品到购物车!");
+            System.out.println("-----------------------------------");
+            System.err.println("\n您并未添加该商品到购物车!");
         } else {
-            System.err.println("对不起,已经达到最低数量,如果想要删除该商品请点击\"删除\"!");
+            System.out.println("-----------------------------------");
+            System.out.println("对不起,已经达到最低数量,如果想要删除该商品请点击\"删除\"!");
+            System.out.println("-----------------------------------");
+            System.err.println("\n对不起,已经达到最低数量,如果想要删除该商品请点击\"删除\"!");
 
         }
     }
