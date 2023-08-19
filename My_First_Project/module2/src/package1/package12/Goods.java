@@ -1,5 +1,9 @@
 package package1.package12;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,27 +27,57 @@ public class Goods {
         this.stock = stock;
     }
 
+    public static void addGoods(Goods goods) {
+        String query = "INSERT INTO goods (id, name, price, stock) VALUES (?, ?, ?, ?)";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, goods.getId());
+            statement.setString(2, goods.getName());
+            statement.setDouble(3, goods.getPrice());
+            statement.setInt(4, goods.getStock());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public void addGoodsToCart() {  //添加指定数量的商品到购物车中
+    public static void updateGoods(Goods goods){
+        String query = "UPDATE goods SET stock = ? where id = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, goods.getStock());
+            statement.setInt(2, goods.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void truncateTable(){
+        String query = "TRUNCATE TABLE goods";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addGoodsToCart(int num1) {  //添加指定数量的商品到购物车中
         while (true) {
-            System.out.print("请输入您要添加的"+name+"数量:");
-            int num1 = a.nextInt();
+//            System.out.print("请输入您要添加的"+name+"数量:");
+//            int num1 = a.nextInt();
             if (num1 <= stock & num1 > 0) {
                 cart.add(Goods.this);
-                this.num = num1;
+                num = num1;
                 stock -= num1;
                 System.out.println("已将" + num1 + "个\"" + name + "\"商品添加到购物车");
+                Goods.updateGoods(Goods.this);
                 break;
             } else if (num1 < 1) {
-                System.out.println("-----------------------------------");
-                System.out.println("您输入的是无效数量,请重新输入!");
-                System.out.println("-----------------------------------");
-                System.err.println("\n您输入的是无效数量,请重新输入!");
+                System.out.println("您输入的是无效数量,请重新输入!--------------------error");
             } else {
-                System.out.println("-----------------------------------");
-                System.out.println("对不起,库存不足,请减少添加到购物车中的该商品数量!");
-                System.out.println("-----------------------------------");
-                System.err.println("\n对不起,库存不足,请减少添加到购物车中的该商品数量!");
+                System.out.println("对不起,库存不足,请减少添加到购物车中的该商品数量!--------------------error");
 
             }
         }
@@ -55,11 +89,9 @@ public class Goods {
             stock += num;
             this.num = 0;
             System.out.println("已将\"" + name + "\"商品从购物车中删除");
+            Goods.updateGoods(Goods.this);
         } else {
-            System.out.println("-----------------------------------");
-            System.out.println("您并未添加该商品到购物车!");
-            System.out.println("-----------------------------------");
-            System.err.println("\n您并未添加该商品到购物车!");
+            System.out.println("您并未添加该商品到购物车!--------------------error");
         }
     }
 
@@ -68,16 +100,11 @@ public class Goods {
             num += 1;
             stock -= 1;
             System.out.println(name + ":+1");
+            Goods.updateGoods(Goods.this);
         } else if (num == 0) {
-            System.out.println("-----------------------------------");
-            System.out.println("请先将商品添加到购物车再执行此操作!");
-            System.out.println("-----------------------------------");
-            System.err.println("\n请先将商品添加到购物车再执行此操作!");
+            System.out.println("请先将商品添加到购物车再执行此操作!--------------------error");
         } else {
-            System.out.println("-----------------------------------");
-            System.out.println("对不起,库存不足,您无法继续添加更多该商品!");
-            System.out.println("-----------------------------------");
-            System.err.println("\n对不起,库存不足,您无法继续添加更多该商品!");
+            System.out.println("对不起,库存不足,您无法继续添加更多该商品!--------------------error");
 
         }
     }
@@ -88,22 +115,31 @@ public class Goods {
             num -= 1;
             stock += 1;
             System.out.println(name + ":-1");
+            Goods.updateGoods(Goods.this);
         } else if (num == 0) {
-            System.out.println("-----------------------------------");
-            System.out.println("您并未添加该商品到购物车!");
-            System.out.println("-----------------------------------");
-            System.err.println("\n您并未添加该商品到购物车!");
+            System.out.println("您并未添加该商品到购物车!--------------------error");
         } else {
-            System.out.println("-----------------------------------");
-            System.out.println("对不起,已经达到最低数量,如果想要删除该商品请点击\"删除\"!");
-            System.out.println("-----------------------------------");
-            System.err.println("\n对不起,已经达到最低数量,如果想要删除该商品请点击\"删除\"!");
+            System.out.println("对不起,已经达到最低数量,如果想要删除该商品请点击\"删除\"!--------------------error");
 
         }
     }
 
     public void selectStock() {   //查看商品库存
-        System.out.println("\"" + name + "\"商品目前的库存为:" + stock);
+        String query = "select stock from goods where id = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, this.getId());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int stock = resultSet.getInt("stock");
+                    System.out.println("\"" + name + "\"商品目前的库存为: " + stock);
+                } else {
+                    System.out.println("未找到商品库存信息");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void goodsAmount() {  //计算购物车中的商品总额

@@ -11,51 +11,62 @@ public class GoodsTest {
         Goods goods8 = new Goods(8, "Iphone8", 8000.0, 100);
         Goods goods9 = new Goods(9, "Iphone9", 9000.0, 100);
 
-        GoodsDAO.addGoods(goods2);
-//        Goods.goodsAmount(); //查询购物车中商品总额
-//
-//        goods1.selectStock();  //查看goods1库存
-//        goods1.addGoodsToCart();   //添加goods1到购物车
-//        goods1.selectStock();  //查看goods1库存
-//        Goods.goodsAmount();   //查询购物车中商品总额
-//
-//        goods2.selectStock();  //查看goods2库存
-//        goods2.addGoodsToCart();   //添加goods2到购物车
-//        goods2.selectStock();  //查看goods2库存
-//        Goods.goodsAmount();   //查询购物车中商品总额
-//
-//        goods3.selectStock();  //查看goods3库存
-//        goods3.addGoodsToCart();   //添加goods3到购物车
-//        goods3.selectStock();  //查看goods3库存
-//        Goods.goodsAmount();   //查询购物车中商品总额
-//
-//        goods1.addGoodsNum();  //数量+1
-//        goods1.addGoodsNum();
-//        goods1.addGoodsNum();
-//        goods1.addGoodsNum();
-//        goods1.addGoodsNum();
-//        goods1.addGoodsNum();
-//        goods1.addGoodsNum();
-//        goods1.subGoodsNum();//数量-1
-//        goods1.subGoodsNum();//数量-1
-//        goods1.selectStock();  //查看goods1库存
-//        Goods.goodsAmount();   //查询购物车中商品总额
-//
-//        goods4.addGoodsNum();  //数量+1
-//        goods4.selectStock();  //查看goods4库存
-//        Goods.goodsAmount();   //查询购物车中商品总额
-//
-//        goods1.deleteGoodsFromCart();
-//        goods1.selectStock();  //查看goods1库存
-//        Goods.goodsAmount();   //查询购物车中商品总额
-//
-//        goods1.addGoodsToCart();
-//        goods1.addGoodsNum();
-//
-//        goods5.subGoodsNum();
-//
-//        goods6.addGoodsToCart();
-//        goods6.subGoodsNum();
+        Goods.truncateTable();
+        Goods.addGoods(goods1);
+        Goods.addGoods(goods2);
+        Goods.addGoods(goods3);
+        Goods.addGoods(goods4);
+        Goods.addGoods(goods5);
+        Goods.addGoods(goods6);
+        Goods.addGoods(goods7);
+        Goods.addGoods(goods8);
+        Goods.addGoods(goods9);
 
+        Goods.goodsAmount(); //查询购物车中商品总额
+
+        goods1.selectStock();  //查看goods1库存
+        goods1.addGoodsToCart(5);   //添加goods1到购物车
+        goods1.selectStock();  //查看goods1库存
+        Goods.goodsAmount();   //查询购物车中商品总额
+
+        goods2.selectStock();  //查看goods2库存
+        goods2.addGoodsToCart(5);   //添加goods2到购物车
+        goods2.selectStock();  //查看goods2库存
+        Goods.goodsAmount();   //查询购物车中商品总额
+
+        goods3.selectStock();  //查看goods3库存
+        goods3.addGoodsToCart(5);   //添加goods3到购物车
+        goods3.selectStock();  //查看goods3库存
+        Goods.goodsAmount();   //查询购物车中商品总额
+
+        goods1.addGoodsNum();  //数量+1
+        goods1.addGoodsNum();
+        goods1.addGoodsNum();
+        goods1.addGoodsNum();
+        goods1.addGoodsNum();
+        goods1.addGoodsNum();
+        goods1.addGoodsNum();
+        goods1.subGoodsNum();//数量-1
+        goods1.subGoodsNum();//数量-1
+        goods1.selectStock();  //查看goods1库存
+        Goods.goodsAmount();   //查询购物车中商品总额
+
+        goods4.addGoodsNum();  //数量+1
+        goods4.selectStock();  //查看goods4库存
+        Goods.goodsAmount();   //查询购物车中商品总额
+
+        goods1.deleteGoodsFromCart();
+        goods1.selectStock();  //查看goods1库存
+        Goods.goodsAmount();   //查询购物车中商品总额
+
+        goods1.addGoodsToCart(5);
+        goods1.addGoodsNum();
+        goods1.selectStock();
+
+        goods5.subGoodsNum();
+
+        goods6.addGoodsToCart(5);
+        goods6.subGoodsNum();
+        goods6.selectStock();
     }
 }
