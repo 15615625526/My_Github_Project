@@ -1,4 +1,5 @@
 package package1.package12;
+
 public class GoodsTest {
     public static void main(String[] args) {
         Goods goods1 = new Goods(1, "Iphone1", 1000.0, 100);

@@ -41,7 +41,7 @@ public class Goods {
         }
     }
 
-    public static void updateGoods(Goods goods){
+    public static void updateGoods(Goods goods) {
         String query = "UPDATE goods SET stock = ? where id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -53,7 +53,7 @@ public class Goods {
         }
     }
 
-    public static void truncateTable(){
+    public static void truncateTable() {
         String query = "TRUNCATE TABLE goods";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -65,8 +65,6 @@ public class Goods {
 
     public void addGoodsToCart(int num1) {  //添加指定数量的商品到购物车中
         while (true) {
-//            System.out.print("请输入您要添加的"+name+"数量:");
-//            int num1 = a.nextInt();
             if (num1 <= stock & num1 > 0) {
                 cart.add(Goods.this);
                 num = num1;
