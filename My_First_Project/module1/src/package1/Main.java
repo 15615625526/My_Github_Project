@@ -1,11 +1,60 @@
 package package1;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("------------------------基本功能-----------------------------------------");
+        /**
+         java SE标准版  EE企业版  ME小型版  LTS长期支持版
+         ASCII编码中,'a'用97表示,'A'用65表示
+         基本数据类型:
+         byte   1个字节      默认值为0    -128~127,不能表示128
+         short  2个字节      默认值为0
+         int    4个字节      默认值为0
+         long   8个字节      默认值为0
+         float  4个字节      默认值为0.0
+         double 8个字节      默认值为0.0
+         char   2个字节      默认值为Unicode 字符 '\u0000'，也就是空字符
+         boolean  1个字节    默认值为false
+         引用数据类型:
+         String,类,接口,数组    默认值为null
+         char类型' '两个单引号之间不能什么都没有,至少要有一个空格;String类型""两个双引号之间可以什么都没有
+         */
+
+        System.out.println("=========================字符串去头尾空格===========================");
+        String temp = "  aa  bb  cc  ";
+        String temp2 = temp.trim();
+        System.out.println(temp);
+        System.out.println(temp2);
+
+        String zifuchuan = "nihaoawoshiwanghui";
+        int len = zifuchuan.length();//表示字符串的长度
+        System.out.println(len);
+//        char cha = zifuchuan[1];   这样是不对的,字符串不能用索引
+//        String t = 100;   这样是不对的,String类型必须加双引号
+
+        int a1 = 2;
+        int a2 = 2;
+        String b1 = new String("halou");
+        String b2 = new String("halou");  //引用数据类型的定义方式
+        String c1 = "halou";   //字面量的定义方式
+        String c2 = "halou";
+        String[] d1 = {"halou"};
+        String[] d2 = {"halou"};
+        System.out.println(a1 == a2);  //true
+        System.out.println(b1 == b2);  //false,此处对比的是b1和b2的内存地址,new出来的内存地址就是不同的,即使内容是相同的
+        System.out.println(c1 == c2);  //true,字面量的方式定义的,内存地址是相同的
+        System.out.println(b1 == c1);  //false
+        System.out.println(d1 == d2);  //false,此处对比的是两个数组的内存地址,是不同的
+        System.out.println(b1.equals(b2));  //true,此处对比的是b1和b2的内容,而不是内存地址
+        System.out.println("hello" == "hello");  //true
+        System.out.println("hello".equals("hello"));  //true
+
+
 //        "hello world".sout  回车(字符串必须加引号)
         System.out.println("hello world");
 //        67.8.sout  回车(数字不用加引号)
@@ -274,5 +323,21 @@ public class Main {
                 System.out.println("您猜测的数字过小");
             }
         }
+        System.out.println("=========================if-else分支结构===========================");
+        if ('a' != 97) {      //!=   表示  不等
+            System.out.println("错误");
+        } else if ('A' == 64) {   // ==   表示  等于
+            System.out.println("错误");
+        } else if ("helou".equals("halou")) {   //  "haha".equals("haha")  表示字符串相等
+            System.out.println("错误");
+        } else if (!"nihao".equals("nihei")) {   //  !"halou".equals("haha")    表示字符串不相等
+            System.out.println("正确");
+        } else {
+            System.out.println("不知道");
+        }
+        System.out.println("=========================Arraylist集合与遍历===========================");
+
+
     }
+
 }
