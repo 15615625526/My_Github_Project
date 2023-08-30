@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易计算器</title>
+</head>
+<body>
+<h1>简易计算器</h1>
+<input type="number" id="number1" placeholder="第一个数字"/>
+<input type="number" id="number2" placeholder="第二个数字"/>
+<button onclick="addNumbers()">相加</button>
+<p id="result">结果: </p>
+
+<script>
+    async function addNumbers() {
+        const number1 = document.getElementById('number1').value;
+        const number2 = document.getElementById('number2').value;
+
+        const response = await fetch('/api/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({number1, number2})
+        });
+
+        const data = await response.json();
+        document.getElementById('result').innerHTML = `结果: ${data.result}`;
+    }
+</script>
+</body>
+</html>
