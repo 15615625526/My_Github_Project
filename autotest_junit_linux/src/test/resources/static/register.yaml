@@ -1,0 +1,5 @@
+elements:
+  register_username: "/html/body/div/form/input[1]"
+  register_password: "/html/body/div/form/input[2]"
+  register_confirm_password: "/html/body/div/form/input[3]"
+  register_button: "/html/body/div/form/input[4]"
