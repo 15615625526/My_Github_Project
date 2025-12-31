@@ -112,10 +112,20 @@
             <scope>test</scope>
         </dependency>
 
+        <!--使用本地仓库的依赖-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.wanghui</groupId>-->
+        <!--            <artifactId>SNAPSHOT</artifactId>-->
+        <!--            <version>1.0</version>-->
+        <!--        </dependency>-->
+
+        <!--使用工程lib目录的依赖-->
         <dependency>
             <groupId>com.wanghui</groupId>
             <artifactId>SNAPSHOT</artifactId>
             <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/My_First_Project-1.0-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <dependency>
