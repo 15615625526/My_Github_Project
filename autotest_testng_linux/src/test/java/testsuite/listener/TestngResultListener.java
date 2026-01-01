@@ -106,7 +106,7 @@ public class TestngResultListener implements ITestListener {
                 "3548916316@qq.com",
                 "wviixqctsutudbfd",
                 "i_want_you520@163.com",
-                "TestNG—Jenkins 测试报告",
+                "TestNG—Jenkins-Linux 测试报告",
                 reportContent
         );
     }
@@ -115,7 +115,7 @@ public class TestngResultListener implements ITestListener {
      * ⭐ 构建邮件内容（完全保持原样）
      */
     public String buildReport() {
-        return "TestNG—Jenkins测试报告\n"
+        return "TestNG—Jenkins-Linux测试报告\n"
                 + "============================\n"
                 + "总计: " + total + "\n"
                 + "失败: " + failed + "\n"

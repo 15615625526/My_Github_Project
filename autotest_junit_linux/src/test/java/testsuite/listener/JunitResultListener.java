@@ -110,7 +110,7 @@ public class JunitResultListener implements TestExecutionListener {
                 "3548916316@qq.com",
                 "wviixqctsutudbfd",
                 "i_want_you520@163.com",
-                "JUnit—Jenkins 测试报告",
+                "JUnit—Jenkins-Linux 测试报告",
                 reportContent
         );
     }
@@ -119,7 +119,7 @@ public class JunitResultListener implements TestExecutionListener {
      * ⭐ 构建邮件内容
      */
     public String buildReport() {
-        return "JUnit—Jenkins测试报告\n"
+        return "JUnit—Jenkins-Linux测试报告\n"
                 + "============================\n"
                 + "总计: " + total + "\n"
                 + "失败: " + failed + "\n"
